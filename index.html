@@ -17,12 +17,24 @@
             padding: 20px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         .logo {
-            position: absolute;
-            top: 10px;
-            left: 10px;
             width: 50px;
+            margin-left: 20px;
+        }
+        .nav {
+            display: flex;
+            gap: 20px;
+            margin-right: 20px;
+        }
+        .nav a {
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 16px;
         }
         .banner {
             background: url('https://via.placeholder.com/1500x400') no-repeat center;
@@ -44,39 +56,76 @@
             padding: 20px;
             font-size: 24px;
             border-radius: 10px;
-            display: inline-block;
+            display: none;
+            margin-top: 10px;
         }
-        .whatsapp-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background-color: #25d366;
-            border-radius: 50%;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .gold-text {
+            color: gold;
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 20px;
+            display: none;
         }
-        .whatsapp-button img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
+        .red-text {
+            color: red;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 5px;
+            display: none;
+        }
+        .input-box {
+            margin-top: 20px;
+        }
+        .input-box input {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            max-width: 400px;
         }
     </style>
+    <script>
+        function showMessage(event) {
+            if (event.key === 'Enter') {
+                var message = document.getElementById('message');
+                var goldText = document.getElementById('goldText');
+                var redText = document.getElementById('redText');
+                var input = document.getElementById('productInput').value.trim().toUpperCase();
+                
+                if (input === "L25077") {
+                    goldText.innerText = "TESTENAT DEPOT";
+                    goldText.style.display = 'block';
+                    redText.innerText = "ENANTATO TESTOSTERONA 250 mg/mL";
+                    redText.style.display = 'block';
+                    message.style.display = 'block';
+                } else {
+                    message.style.display = 'none';
+                    goldText.style.display = 'none';
+                    redText.style.display = 'none';
+                }
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="header">
         <img src="LANDERLAN.png" alt="Logo Landerlan" class="logo">
-        <h2>Verificação de Autenticidade</h2>
+        <nav class="nav">
+            <a href="https://landerlan.com/">Início</a>
+            <a href="https://landerlan.com/">Produtos</a>
+            <a href="https://landerlan.com/">Clientes</a>
+        </nav>
     </div>
     <div class="banner">
         AUTENTICIDADE DO PRODUTO
     </div>
     <div class="content">
         <h1>Verificar Produto</h1>
-        <div class="message">✅ Esse produto é original</div>
+        <div class="input-box">
+            <input type="text" id="productInput" placeholder="Informe o lote do produto" onkeypress="showMessage(event)">
+        </div>
+        <div id="message" class="message">✅ Esse produto é original</div>
+        <div id="goldText" class="gold-text"></div>
+        <div id="redText" class="red-text"></div>
     </div>
-    <a href="https://wa.me/447537874238" target="_blank" class="whatsapp-button">
-        <img src="whatsapp-logo-png-0.png" alt="WhatsApp">
-    </a>
 </body>
 </html>
